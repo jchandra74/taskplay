@@ -31,11 +31,9 @@ The point of the exercise is to ensure that all files are executed prior to the 
 
 Along the way, I want to show when is the appropriate time to use `.ConfigureAwait(false)` and when it is not appropriate.  I also want to demonstrate hwo to chain Task using `.ContinueWith` and the necessary usage of `.Unwrap` method to reduce the confusion of having to handle `Task<Task<T>>` when doing chaining.
 
-All the codes are in `Program.cs` and is heavily commented, so it should be easy to follow.
+`Program.cs` can be swapped to use `SampleTPL` or `SampleAsyncAwait`.  The code should be heavily commented, so it should be easy to follow.
 
-The code is meant to be simplistic, so I am including any logging, configuration, dependency injection, etc. intentionally.
-
-Of course, if you are doing a proper application, it is highly recommended to do so, but this one is **intentionally** dumbed down to the important point (dealing with TPL, async/await, Task continuation and chaining) to remove the other complexities.
+The code is meant to be simplistic, so I am not including any logging, configuration, dependency injection, etc. intentionally.  Of course, if you are doing a proper application, it is highly recommended to do so, but this one is **intentionally** dumbed down to the important point (dealing with TPL, async/await, Task continuation and chaining) to remove the other complexities.
 
 
 # How to Run
