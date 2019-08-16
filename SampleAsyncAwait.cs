@@ -33,6 +33,9 @@ namespace taskplay
         {
             // Instead of forcing all method to be async, we can leave some as synchronous and only
             // fall back to use await on actual asynchronous methods.
+            
+            // We are paying for the additional state machine but in return it's easier to debug and follow?
+            // Worth it?
 
             ctx = await ReadAsync(ctx);
             ctx = AsInt(ctx);
