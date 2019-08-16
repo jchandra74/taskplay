@@ -69,7 +69,7 @@ namespace taskplay
                     ctx.FileData = t.GetAwaiter().GetResult();
                     return ctx;
                 });
-            task.ConfigureAwait(false);
+            task.ConfigureAwait(false); // to indicate that we don't care where the thread should continue on...
             return task;
         }
 
@@ -89,7 +89,7 @@ namespace taskplay
             var ctx = task.GetAwaiter().GetResult();
             ctx.Number = Convert.ToInt32(Encoding.UTF8.GetString(ctx.FileData));
             var task2 = Task.FromResult(ctx);
-            task2.ConfigureAwait(false);
+            task2.ConfigureAwait(false);    // to indicate that we don't care where the thread should continue on...
             return task2;
         }
 
@@ -113,7 +113,7 @@ namespace taskplay
             var ctx = task.GetAwaiter().GetResult();
             ctx.Number = ctx.Number * 5;
             var task2 = Task.FromResult(ctx);
-            task2.ConfigureAwait(false);
+            task2.ConfigureAwait(false);    // to indicate that we don't care where the thread should continue on...
             return task2;
         }
 
@@ -122,7 +122,7 @@ namespace taskplay
             var task2 = Task
                 .Delay(_rnd.Next(10) * 1000)
                 .ContinueWith(t => task.GetAwaiter().GetResult());
-            task2.ConfigureAwait(false);
+            task2.ConfigureAwait(false);    // to indicate that we don't care where the thread should continue on...
             return task2;
         }
 
@@ -134,7 +134,7 @@ namespace taskplay
             var task2 = _writer
                 .WriteAsync(ctx.FileName, ctx.FileData)
                 .ContinueWith(t => ctx);
-            task2.ConfigureAwait(false);
+            task2.ConfigureAwait(false);    // to indicate that we don't care where the thread should continue on...
             return task2;
         }
     }

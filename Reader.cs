@@ -21,7 +21,7 @@ namespace taskplay
             if (!File.Exists(fullPath)) throw new InvalidOperationException($"{fullPath} does not exists.");
 
             var task = File.ReadAllBytesAsync(fullPath);
-            task.ConfigureAwait(false);
+            task.ConfigureAwait(false); // to indicate that we don't care where the thread should continue on...
             return task;
         }
     }
